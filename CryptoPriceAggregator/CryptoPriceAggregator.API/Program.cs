@@ -30,8 +30,8 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("Angular", policy =>
-        policy.WithOrigins("http://localhost:4200")
+    options.AddPolicy("Frontend", policy =>
+        policy.WithOrigins("http://localhost:4200", "http://localhost:5173", "http://localhost:5174")
               .AllowAnyHeader()
               .AllowAnyMethod());
 });
@@ -40,6 +40,6 @@ var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
-app.UseCors("Angular");
+app.UseCors("Frontend");
 app.MapControllers();
 app.Run();
